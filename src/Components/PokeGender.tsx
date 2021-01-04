@@ -25,9 +25,14 @@ const PokeGender: React.FC<IProps> = ({ id }) => {
         }
 
         func();
-
-        setMales(100 - Number(gender) * 12.5)
-        setFemales(Number(gender) * 12.5)
+        if(Number(gender) >= 0) {
+            setMales(100 - Number(gender) * 12.5)
+            setFemales(Number(gender) * 12.5)
+        }
+        if(Number(gender) == -1) {
+            setMales(0);
+            setFemales(0);
+        }
     }, [id, gender])
     
     return(
