@@ -17,9 +17,11 @@ const PokeGender: React.FC<IProps> = ({ id }) => {
 
     React.useEffect(() => {
         const func = async () => {
-            const res = await fetch('https://pokeapi.co/api/v2/pokemon-species/'+id);
-            const json: IPokesResult = await res.json();
-            setGender(json.gender_rate);
+            if(id) {
+                const res = await fetch('https://pokeapi.co/api/v2/pokemon-species/'+id);
+                const json: IPokesResult = await res.json();
+                setGender(json.gender_rate);
+            }
         }
 
         func();

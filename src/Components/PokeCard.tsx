@@ -25,6 +25,7 @@ interface IPokemon {
     name: string;
     sprites: ISprites;
     types: Array<Object>;
+    stats: Array<Object>;
 }
 
 interface ISprites {
@@ -41,9 +42,11 @@ const PokeCard: React.FC<IProps> = ({ url }) => {
 
     React.useEffect(() => {
         const func = async () => {
-            const res = await fetch(url);
-            const json: IPokemon = await res.json();
-            setPokemon(json);
+            if(url){
+                const res = await fetch(url);
+                const json: IPokemon = await res.json();
+                setPokemon(json);
+            }
         }
         func();
     }, [url])
@@ -56,7 +59,10 @@ const PokeCard: React.FC<IProps> = ({ url }) => {
                         { pokemon && formatName(pokemon?.name!) }
                     </h4>
                 </CardBody>
-                <img style={{ margin: '0 5%', maxWidth: '500px', width: '90%' }} src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formatNumber(pokemon?.id!)}.png`} alt=""/>
+                {pokemon?.id &&
+                    <img style={{ margin: '0 5%', maxWidth: '500px', width: '90%' }} src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formatNumber(pokemon?.id!)}.png`} alt=""/>
+                }
+                
                 <Badge>SPRITES</Badge>
                 <Row className="d-flex justify-content-center">
                     <Col xs='5'><img src={ pokemon?.sprites.front_default} alt={`${pokemon?.name} font normal`}/></Col>
@@ -74,7 +80,9 @@ const PokeCard: React.FC<IProps> = ({ url }) => {
                 </CardBody>
                 <Badge>STATS</Badge>
                 <CardBody>
-                    <PokeStats/>
+                    <PokeStats stats={
+                        pokemon! &&
+                        pokemon?.stats!}/>
                 </CardBody>
                 <Badge>GENDER RATIO</Badge>
                 <PokeGender id={pokemon?.id!}/>
