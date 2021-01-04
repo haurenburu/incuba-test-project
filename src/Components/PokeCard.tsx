@@ -54,10 +54,10 @@ const PokeCard: React.FC<IProps> = ({ url }) => {
     }, [url])
 
     return(
-        <Col xs='12' md='6' lg='3' className='my-2 my-2'>
-            <Card color='light'>
+        <Col xs='12' md='6' lg='3' className='my-3'>
+            <Card color='light' style={{ borderRadius: '1.5rem'}}>
                 <CardBody>
-                    <h4><Badge color="secondary">#{formatNumber(pokemon?.id!)}</Badge>
+                    <h4><Badge color="dark">#{formatNumber(pokemon?.id!)}</Badge>
                         { pokemon && formatName(pokemon?.name!) }
                     </h4>
                 </CardBody>
@@ -65,7 +65,7 @@ const PokeCard: React.FC<IProps> = ({ url }) => {
                     <img style={{ margin: '0 5%', maxWidth: '500px', width: '90%' }} src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formatNumber(pokemon?.id!)}.png`} alt=""/>
                 }
                 
-                <Badge>SPRITES</Badge>
+                <Badge color="dark">SPRITES</Badge>
                 <Row className="d-flex justify-content-center">
                     <Col xs='5'><img src={ pokemon?.sprites.front_default} alt={`${pokemon?.name} font normal`}/></Col>
                     <Col xs='5'><img src={ pokemon?.sprites.back_default} alt={`${pokemon?.name} back normal`}/></Col>
@@ -74,13 +74,13 @@ const PokeCard: React.FC<IProps> = ({ url }) => {
                     <Col xs='5'><img src={ pokemon?.sprites.back_shiny} alt={`${pokemon?.name} back shiny`}/></Col>
                     <Col xs='5'><img src={ pokemon?.sprites.front_shiny} alt={`${pokemon?.name} back shiny`}/></Col>
                 </Row>
-                <Badge>TYPE</Badge>
+                <Badge color="dark">TYPE</Badge>
                 <CardBody>
                     {pokemon?.types.map((tp: any, index) => {
                         return <PokeBadge key={tp.name + index + tp.type.name} type={tp.type.name} />
                     })}
                 </CardBody>
-                <Badge>STATS</Badge>
+                <Badge color="dark">STATS</Badge>
                 <Col className="pt-3" xs='12'>Height: {Number(pokemon?.height)/10} m </Col>
                 <Col xs='12'>Weight: {Number(pokemon?.weight)/10} Kg</Col>
                 <CardBody>
@@ -88,7 +88,7 @@ const PokeCard: React.FC<IProps> = ({ url }) => {
                         pokemon! &&
                         pokemon?.stats!}/>
                 </CardBody>
-                <Badge>GENDER RATIO</Badge>
+                <Badge color="dark" >GENDER RATIO</Badge>
                 <PokeGender id={pokemon?.id!}/>
             </Card>
         </Col>
