@@ -1,10 +1,12 @@
 import React from 'react';
+import PokeList from './Components/PokeList';
+import { Container } from 'reactstrap';
 
-function App() {
-  return (
-    <div className="App">
-      HELLO INCUBA
-    </div>
+const App: React.FC = () => {
+    return (
+        <Container>
+            <PokeList />
+        </Container>
   );
 }
 
