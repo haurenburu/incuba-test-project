@@ -7,13 +7,18 @@ interface IPokesResult extends Response {
     results: Array<Object>
 }
 
-const PokeList: React.FC = () => {
+interface IProps {
+    page: Number;
+}
+
+const PokeList: React.FC<IProps> = ({ page }) => {
 
     const [pokes, setPokes] = React.useState<Array<Object>>([{}]);
 
+    
     React.useEffect(() => {
         const func = async () => {
-            const res = await fetch('https://pokeapi.co/api/v2/pokemon');
+            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${Number(page) * 20}&limit=20`);
             const json: IPokesResult = await res.json();
             // console.log(json.results);
             setPokes(json.results);
