@@ -10,7 +10,12 @@ interface IPokesResult extends Response {
 interface IProps {
     page: Number;
 }
-
+/**
+ * 
+ * @param param0 Gets a page number from react props, that number going to be multiplied
+ * by 21 (actually the number of items per page we want) in that case we have 21 per page
+ * on 3 "rows" which means 7 by 3
+ */
 const PokeList: React.FC<IProps> = ({ page }) => {
 
     const [pokes, setPokes] = React.useState<Array<Object>>([{}]);

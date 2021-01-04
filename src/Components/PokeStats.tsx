@@ -4,6 +4,7 @@ import { Progress } from 'reactstrap';
 interface IProps {
     stats: Array<Object>;
 }
+
 const colors = [
     'danger',
     'info',
@@ -12,6 +13,11 @@ const colors = [
     'warning',
     'primary',
 ]
+
+/**
+ * 
+ * @param param0 In this case we get the actual state (stats object or array) from the parent, doing this we dont have to do another fetch
+ */
 
 const PokeStats: React.FC<IProps> = ({ stats }) => {
     return(

@@ -1,9 +1,18 @@
 import React from 'react';
 import { Badge } from 'reactstrap';
 
+/**
+ * 
+ */
+
 interface IProps {
     type: String;
 }
+/**
+ * 
+ * @param type Is a string with pokemon type as content egg: fire
+ * @returns A hexa color code depending on the pokemon type
+ */
 
 function pickAColor(type: String) {
     switch(type) {
@@ -28,6 +37,12 @@ function pickAColor(type: String) {
         default: return '#68A090';
     }
 }
+
+/**
+ * 
+ * @param param0 A string from react props with the actual type of the pokemon
+ */
+
 
 const PokeBadge: React.FC<IProps> = ({ type }) => {
     return(

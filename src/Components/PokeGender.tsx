@@ -9,7 +9,10 @@ interface IProps {
 interface IPokesResult extends Response {
     gender_rate: Number
 }
-
+/**
+ * 
+ * @param param0 A Number from react props, that number is going to compose a url for the API
+ */
 const PokeGender: React.FC<IProps> = ({ id }) => {
     const [gender, setGender] = React.useState<Number>();
     const [males, setMales] = React.useState<Number>(0);

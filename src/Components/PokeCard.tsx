@@ -5,12 +5,21 @@ import PokeStats from './PokeStats';
 import PokeBadge from './PokeBadge';
 import PokeGender from './PokeGender';
 
+/**
+ * 
+ * @param num Number between 0 and 1200
+ * @returns Returns a stringish with 3 digits instead of 1 / 2
+ */
 function formatNumber(num: Number) {
     if(num < 10) return '00' + num;
     else if (num < 100) return '0' + num;
     return num;
 }
-
+/**
+ * 
+ * @param name String with namo of the pokemon
+ * @returns Returns a capitalized name egg: pikachu -> Pikachu
+ */
 function formatName(name: String) {
     return ' ' + name.charAt(0).toUpperCase() + name.slice(1);
 }
@@ -37,7 +46,10 @@ interface ISprites {
     back_shiny: string;
 }
 
-
+/**
+ * 
+ * @param param0 PokeAPI url
+ */
 const PokeCard: React.FC<IProps> = ({ url }) => {
 
     const [pokemon, setPokemon] = React.useState<IPokemon>()
