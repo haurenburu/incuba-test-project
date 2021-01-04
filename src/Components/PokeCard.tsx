@@ -54,7 +54,7 @@ const PokeCard: React.FC<IProps> = ({ url }) => {
     }, [url])
 
     return(
-        <Col xs='12' md='6' lg='3' className='my-3'>
+        <Col xs='12' md='6' lg='4' className='my-3'>
             <Card color='light' style={{ borderRadius: '1.5rem'}}>
                 <CardBody>
                     <h4><Badge color="dark">#{formatNumber(pokemon?.id!)}</Badge>

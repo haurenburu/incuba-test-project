@@ -1,9 +1,5 @@
 import React from 'react';
 
-interface IPokesResult extends Response {
-    results: Array<Object>
-}
-
 const PokeList: React.FC = () => {
     return (
         <header>
