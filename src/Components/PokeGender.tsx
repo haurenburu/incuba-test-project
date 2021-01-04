@@ -23,10 +23,10 @@ const PokeGender: React.FC<IProps> = ({ id }) => {
         }
 
         func();
+
         setMales(100 - Number(gender) * 12.5)
         setFemales(Number(gender) * 12.5)
-
-    }, [gender])
+    }, [id, gender])
     
     return(
          <CardBody>
