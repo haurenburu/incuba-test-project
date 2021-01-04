@@ -24,6 +24,8 @@ interface IPokemon {
     id: Number;
     name: string;
     sprites: ISprites;
+    height: string;
+    weight: string;
     types: Array<Object>;
     stats: Array<Object>;
 }
@@ -66,11 +68,11 @@ const PokeCard: React.FC<IProps> = ({ url }) => {
                 <Badge>SPRITES</Badge>
                 <Row className="d-flex justify-content-center">
                     <Col xs='5'><img src={ pokemon?.sprites.front_default} alt={`${pokemon?.name} font normal`}/></Col>
-                    <Col xs='5'><img src={ pokemon?.sprites.front_shiny} alt={`${pokemon?.name} back shiny`}/></Col>
+                    <Col xs='5'><img src={ pokemon?.sprites.back_default} alt={`${pokemon?.name} back normal`}/></Col>
                 </Row>
                 <Row className="d-flex justify-content-center">
-                    <Col xs='5'><img src={ pokemon?.sprites.back_default} alt={`${pokemon?.name} back normal`}/></Col>
                     <Col xs='5'><img src={ pokemon?.sprites.back_shiny} alt={`${pokemon?.name} back shiny`}/></Col>
+                    <Col xs='5'><img src={ pokemon?.sprites.front_shiny} alt={`${pokemon?.name} back shiny`}/></Col>
                 </Row>
                 <Badge>TYPE</Badge>
                 <CardBody>
@@ -79,6 +81,8 @@ const PokeCard: React.FC<IProps> = ({ url }) => {
                     })}
                 </CardBody>
                 <Badge>STATS</Badge>
+                <Col className="pt-3" xs='12'>Height: {Number(pokemon?.height)/10} m </Col>
+                <Col xs='12'>Weight: {Number(pokemon?.weight)/10} Kg</Col>
                 <CardBody>
                     <PokeStats stats={
                         pokemon! &&
