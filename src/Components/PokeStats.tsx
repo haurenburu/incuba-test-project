@@ -1,19 +1,29 @@
 import React from 'react';
 import { Progress } from 'reactstrap';
 
-const PokeStats: React.FC = () => {
+interface IProps {
+    stats: Array<Object>;
+}
+const colors = [
+    'danger',
+    'info',
+    'warning',
+    'info',
+    'warning',
+    'primary',
+]
+
+const PokeStats: React.FC<IProps> = ({ stats }) => {
     return(
-        <>
-            HP:     <Progress value="75" max="300" color='danger'/>
-            ATK:    <Progress value="60" max="300" color='info'/>
-            DEF:    <Progress value="70" max="300" color='warning'/>
-            SATK:   <Progress value="70" max="300" color='info'/>
-            SDEF:   <Progress value="70" max="300" color='warning'/>
-            SPEED:  <Progress value="70" max="300" color='primary'/>
-        </>
+        <div>
+            {
+                stats && 
+                stats.map((a:any, index) => <div key={a.base_stat + index + a.stat.name}>{a.stat.name.toUpperCase().replace('-', ' ')}
+                    <Progress color={colors[index]} value={a.base_stat} max='200'>{a.base_stat}</Progress>
+                    </div>)
+            }
+        </div>
     )
 }
 
 export default PokeStats;
-
-//<></>
