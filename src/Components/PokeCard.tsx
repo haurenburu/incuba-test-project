@@ -3,6 +3,7 @@ import { Row, Col, Card, CardBody, Badge } from 'reactstrap';
 
 import PokeStats from './PokeStats';
 import PokeBadge from './PokeBadge';
+import PokeGender from './PokeGender';
 
 function formatNumber(num: Number) {
     if(num < 10) return '00' + num;
@@ -51,7 +52,6 @@ const PokeCard: React.FC<IProps> = ({ url }) => {
         <Col xs='12' md='6' lg='3' className='my-2 my-2'>
             <Card color='light'>
                 <CardBody>
-                    {/* <h4><Badge color="secondary">#{formatNumber(pokemon?.id!)}</Badge> {pokemon?.name}</h4> */}
                     <h4><Badge color="secondary">#{formatNumber(pokemon?.id!)}</Badge>
                         { pokemon && formatName(pokemon?.name!) }
                     </h4>
@@ -71,23 +71,13 @@ const PokeCard: React.FC<IProps> = ({ url }) => {
                     {pokemon?.types.map((tp: any, index) => {
                         return <PokeBadge key={tp.name + index + tp.type.name} type={tp.type.name} />
                     })}
-
-                    {/* <PokeBadge type={pokemon?.types[0].type.name}/>
-                    <PokeBadge type=''/> */}
                 </CardBody>
                 <Badge>STATS</Badge>
                 <CardBody>
                     <PokeStats/>
                 </CardBody>
                 <Badge>GENDER RATIO</Badge>
-                {/* <CardBody>
-                    <Progress multi>
-                        <Progress bar value="50" />
-                        <Progress bar value="50" color='danger'/>
-                    </Progress>
-                    <div className="text-center mt-2">50% Male, 50% Female</div>
-                </CardBody> */}
-
+                <PokeGender id={pokemon?.id!}/>
             </Card>
         </Col>
     )
