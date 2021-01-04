@@ -32,7 +32,7 @@ function pickAColor(type: String) {
 const PokeBadge: React.FC<IProps> = ({ type }) => {
     return(
         <Badge style={{background: pickAColor(type), padding: '10px', margin: '2.5%', minWidth: '80px', width: '45%' }}>
-            { type }
+            { type.toUpperCase() }
         </Badge>
     )
 }
