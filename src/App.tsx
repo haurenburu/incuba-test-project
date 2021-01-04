@@ -33,7 +33,7 @@ const App: React.FC = () => {
             window.removeEventListener('wheel', infinityScroll);
             window.removeEventListener('scroll', infinityScroll);
         }
-    }, [infinity])
+    }, [infinity, pages])
     
     return (
         <Container>
