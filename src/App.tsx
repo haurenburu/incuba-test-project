@@ -1,5 +1,7 @@
 import React from 'react';
 import PokeList from './Components/PokeList';
+import Header from './Components/Header';
+
 import { Container } from 'reactstrap';
 
 const App: React.FC = () => {
@@ -36,13 +38,16 @@ const App: React.FC = () => {
     }, [infinity, pages])
     
     return (
-        <Container>
+        <>
+            <Header />
+            <Container>
 
-            {pages.map((page) => {
-                return <PokeList key={page} page={page} />
-            })}
+                {pages.map((page) => {
+                    return <PokeList key={page} page={page} />
+                })}
 
-        </Container>
+            </Container>
+        </>
   );
 }
 
